@@ -3,12 +3,9 @@ phases:
   install:
     runtime-versions:
         docker: 18     
-    commands: 
-      - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2&
-      
+    
   pre_build: 
-    commands: 
-         #REPOSITORY_URI=123456789.dkr.ecr.eu-866453577062.dkr.ecr.ap-south-1.amazonaws.com/orangehrm:latestwest-1.amazonaws.com/sample/sampleapp 
+    
   build: 
     commands: 
     
@@ -25,7 +22,4 @@ phases:
     -  docker push 866453577062.dkr.ecr.ap-south-1.amazonaws.com/orangehrm:latest
 
     
-   
-artifacts:
-  files:
-    - imageDetail.json
+
