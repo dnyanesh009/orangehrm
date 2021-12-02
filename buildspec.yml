@@ -9,10 +9,10 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t orangehrm:latest .
-      - docker tag orangehrm:latest 866453577062.dkr.ecr.ap-south-1.amazonaws.com/orangehrm:latest   
+      - docker build -t orangehrm .
+      - docker tag orangehrm 866453577062.dkr.ecr.ap-south-1.amazonaws.com/orangehrm 
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 866453577062.dkr.ecr.ap-south-1.amazonaws.com/orangehrm:latest
+      - docker push 866453577062.dkr.ecr.ap-south-1.amazonaws.com/orangehrm
