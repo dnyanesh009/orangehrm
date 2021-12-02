@@ -1,18 +1,25 @@
-version: 0.2
-
-phases:
-  pre_build:
-    commands:
-      - echo Logging in to Amazon ECR...
-      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
-  build:
-    commands:
-      - echo Build started on `date`
-      - echo Building the Docker image...          
-      - docker build -t orangehrm .
-      - docker tag orangehrm 866453577062.dkr.ecr.ap-south-1.amazonaws.com/orangehrm 
-  post_build:
-    commands:
-      - echo Build completed on `date`
-      - echo Pushing the Docker image...
-      - docker push 866453577062.dkr.ecr.ap-south-1.amazonaws.com/orangehrm
+version: 0.2 
+ 
+phases: 
+  pre_build: 
+    commands:   
+    - echo Logging in to Amazon ECR.... 
+    - aws --version
+    # update the following line with your own region
+    #- aws ecr get-login --no-include-email --region ap-south-1
+    - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 866453577062.dkr.ecr.ap-south-1.amazonaws.com
+  build: 
+    commands: 
+    - echo Build started on `date` 
+    - echo Building the Dockeroo image... 
+    # update the following line with the name of your own ECR repository
+    - docker build -t orangehrm . 
+    # update the following line with the URI of your own ECR repository 
+    # (view the Push Commands in the console)
+    - docker tag orangehrm 866453577062.dkr.ecr.ap-south-1.amazonaws.com/orangehrm
+  post_build: 
+    commands: 
+    - echo Build completed on `date` 
+    - echo pushing to repo
+    # update the following line with the URI of your own ECR repository
+    - docker push 866453577062.dkr.ecr.ap-south-1.amazonaws.com/orangehrm
