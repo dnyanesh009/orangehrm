@@ -23,8 +23,8 @@ phases:
     - echo pushing to repo
     # update the following line with the URI of your own ECR repository
     - docker push 866453577062.dkr.ecr.ap-south-1.amazonaws.com/orangehrm
-artifacts:
+
 artifacts:
     files: imagedefinitions.json
-  name: s3-to-s3-latest-build.zip
+ 
 
